@@ -24,7 +24,7 @@
   if hash.match('#comment_')
     $(hash).addClass 'highlighted'
 
-$ ->
+readyForAjax = ->
   window.tolerance_time_start = unixsec(new Date)
 
   comment_forms  = "#new_comment, .reply_comments_form"
@@ -94,11 +94,16 @@ $ ->
     comment.siblings('.form_holder').html(form)
     form.fadeIn()
     false
+$(document).ready(readyForAjax)
+$(document).on('page:load', readyForAjax)
 
-$ ->
+readyForHashChange = ->
   # ANCHOR HIGHLIGHT
   highlight_anchor()
 
   $(window).on 'hashchange', ->
     $('.comment.highlighted').removeClass 'highlighted'
     highlight_anchor()
+    
+$(document).ready(readyForHashChange)
+$(document).on('page:load', readyForHashChange)

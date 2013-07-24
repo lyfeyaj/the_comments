@@ -1,4 +1,4 @@
-$ ->
+readyForComments = ->
   # CONTROLS
   holder = $('.comments_list')
   
@@ -55,3 +55,5 @@ $ ->
     li = link.parents('li').first()
     li.attr 'class', 'banned'
     li.find('.state').html 'banned'
+$(document).ready(readyForComments)
+$(document).on('page:load', readyForComments)
